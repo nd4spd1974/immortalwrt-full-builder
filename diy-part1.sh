@@ -32,9 +32,9 @@ echo "--> 正在同步外部自定义插件仓库..."
 [ ! -d "package/custom-apps/openwrt-honk" ] && git clone --depth=1 https://github.com/kenzok8/openwrt-honk.git package/custom-apps/openwrt-honk || true
 
 # iQoS QoS 插件：克隆 ilxp/iqos-openwrt (main 分支已适配 25.12 apk)
-# 仓库含 iqos/ 与 luci-app-iqos/ 两个子包，feeds install -a 会自动扫描注册
 echo "--> 正在同步 iQoS QoS 插件源码..."
-[ ! -d "package/custom-apps/iqos-openwrt/.git" ] && git clone --depth=1 https://github.com/ilxp/iqos-openwrt.git package/custom-apps/iqos-openwrt || true
+[ ! -d "package/custom-apps/iqos-openwrt/.git" ] && git clone --depth=1 \
+  https://github.com/ilxp/iqos-openwrt.git package/custom-apps/iqos-openwrt || true
 
 # 同步 Passwall 官方维护的最权威 Loyalsoldier v2ray-geodata 规则包 (支持 telegram 标签)
 echo "--> 正在同步 Loyalsoldier v2ray-geodata 规则包定义..."
