@@ -31,10 +31,12 @@ echo "--> 正在同步外部自定义插件仓库..."
 [ ! -d "package/custom-apps/rtp2httpd" ] && git clone --depth=1 https://github.com/stackia/rtp2httpd.git package/custom-apps/rtp2httpd || true
 [ ! -d "package/custom-apps/openwrt-honk" ] && git clone --depth=1 https://github.com/kenzok8/openwrt-honk.git package/custom-apps/openwrt-honk || true
 
-# iQoS QoS 插件：克隆 ilxp/iqos-openwrt (main 分支已适配 25.12 apk)
-echo "--> 正在同步 iQoS QoS 插件源码..."
-[ ! -d "package/custom-apps/iqos-openwrt/.git" ] && git clone --depth=1 \
-  https://github.com/ilxp/iqos-openwrt.git package/custom-apps/iqos-openwrt || true
+# SQM 使用官方 feeds 中的 sqm-scripts / luci-app-sqm，无需克隆源码
+# 新增 LuCI 插件：gaobin89 的上网时间控制 (js 分支)、sirpdboy 的设备关机插件
+# 仓库内 Makefile 位于同名子目录，feeds install -a 会递归扫描注册
+echo "--> 正在同步时间控制与关机插件源码..."
+[ ! -d "package/custom-apps/gaobin89-timecontrol/.git" ] && git clone --depth=1 -b js https://github.com/gaobin89/luci-app-timecontrol.git package/custom-apps/gaobin89-timecontrol || true
+[ ! -d "package/custom-apps/luci-app-poweroffdevice/.git" ] && git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-poweroffdevice.git package/custom-apps/luci-app-poweroffdevice || true
 
 # 同步 Passwall 官方维护的最权威 Loyalsoldier v2ray-geodata 规则包 (支持 telegram 标签)
 echo "--> 正在同步 Loyalsoldier v2ray-geodata 规则包定义..."
