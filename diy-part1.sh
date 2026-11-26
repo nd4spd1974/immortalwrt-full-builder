@@ -38,6 +38,11 @@ echo "--> 正在同步时间控制与关机插件源码..."
 [ ! -d "package/custom-apps/gaobin89-timecontrol/.git" ] && git clone --depth=1 -b js https://github.com/gaobin89/luci-app-timecontrol.git package/custom-apps/gaobin89-timecontrol || true
 [ ! -d "package/custom-apps/luci-app-poweroffdevice/.git" ] && git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-poweroffdevice.git package/custom-apps/luci-app-poweroffdevice || true
 
+# Vantage 主题与实时仪表盘（anothaDev，main 分支，专为 25.12 构建）
+# 仓库内 4 个平级包：luci-theme-vantage / luci-app-vantage / luci-app-vantage-aps / luci-app-vantage-traffic
+# feeds install -a 会递归扫描注册；本次只启用主题+仪表盘，aps/traffic 保持未选
+[ ! -d "package/custom-apps/luci-theme-vantage/.git" ] && git clone --depth=1 -b main https://github.com/anothaDev/luci-theme-vantage.git package/custom-apps/luci-theme-vantage || true
+
 # 同步 Passwall 官方维护的最权威 Loyalsoldier v2ray-geodata 规则包 (支持 telegram 标签)
 echo "--> 正在同步 Loyalsoldier v2ray-geodata 规则包定义..."
 mkdir -p package/custom-apps/v2ray-geodata
